@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism AI Assistant - Multi-Agent System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+        </button>
+
+        <!-- Help Button -->
+        <button class="help-button" id="helpButton" aria-label="Help">
+            <span>?</span>
+        </button>
+
+        <header>
+            <div class="header-content">
+                <div class="header-icon">✈️</div>
+                <h1>Tourism AI Assistant</h1>
+                <p class="subtitle">Your personal travel planning companion</p>
+            </div>
+        </header>
+
+        <main>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <p>👋 Hey there, traveler! I'm here to help you plan amazing trips!</p>
+                            <p>I can tell you about:</p>
+                            <ul>
+                                <li>🌤️ Current weather and forecast</li>
+                                <li>📍 Must-see attractions and hidden gems</li>
+                            </ul>
+                            <p><strong>Ready to explore? Try:</strong></p>
+                            <ul>
+                                <li>"I'm going to Bangalore, what's the weather?"</li>
+                                <li>"What places can I visit in Paris?"</li>
+                                <li>"Tell me about Tokyo - weather and places!"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="userInput" 
+                            placeholder="Ask me anything about your next destination..." 
+                            autocomplete="off"
+                        >
+                        <button id="sendButton" class="send-button">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" data-query="I'm going to Bangalore, what's the weather?">
+                            <span>🌤️</span> Weather
+                        </button>
+                        <button class="quick-action-btn" data-query="I'm going to Paris, what places can I visit?">
+                            <span>📍</span> Places
+                        </button>
+                        <button class="quick-action-btn" data-query="I'm going to Tokyo, what's the temperature and what places can I visit?">
+                            <span>🌍</span> Both
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ using Flask & Multi-Agent Architecture</p>
+        </footer>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="help-modal" id="helpModal">
+        <div class="help-modal-content">
+            <div class="help-modal-header">
+                <h2>About This System</h2>
+                <button class="help-modal-close" id="helpModalClose">&times;</button>
+            </div>
+            <div class="help-modal-body">
+                <div class="help-item">
+                    <div class="help-icon">🌤️</div>
+                    <div>
+                        <strong>Weather Agent</strong>
+                        <p>Fetches real-time weather data using Open-Meteo API</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon">📍</div>
+                    <div>
+                        <strong>Places Agent</strong>
+                        <p>Finds tourist attractions using Nominatim & Overpass APIs</p>
+                    </div>
+                </div>
+                <div class="help-item">
+                    <div class="help-icon">🎯</div>
+                    <div>
+                        <strong>Parent Agent</strong>
+                        <p>Orchestrates the system and processes your queries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
